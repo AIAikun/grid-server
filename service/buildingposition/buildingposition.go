@@ -10,13 +10,13 @@ import (
 
 // 查询建筑位置信息列表
 func ListBuildingposition(c *gin.Context) {
-	var Rows []model.BuidingRow
+	var Rows []model.BuildingRow
 	var total int64
 	pageStr := c.Query("page")
 	pageSizeStr := c.Query("pageSize")
 	page, _ := strconv.Atoi(pageStr)
 	pageSize, _ := strconv.Atoi(pageSizeStr)
-	err := db.DB.Table("buildingposition").Count(&total).Limit(pageSize).Offset((page - 1) * pageSize).Find(&Rows).Error
+	err := db.DB.Table("building_position").Count(&total).Limit(pageSize).Offset((page - 1) * pageSize).Find(&Rows).Error
 	if err != nil {
 		c.JSON(500, gin.H{"code": 500, "error": err, "msg": "查询失败"})
 		panic(err)
@@ -28,8 +28,8 @@ func ListBuildingposition(c *gin.Context) {
 // 查询建筑位置信息详细信息
 func GetBuildingposition(c *gin.Context) {
 	id := c.Param("id")
-	var Row model.BuidingRow
-	err := db.DB.Table("buildingposition").Take(&Row, id).Error
+	var Row model.BuildingRow
+	err := db.DB.Table("building_position").Take(&Row, id).Error
 	if err != nil {
 		c.JSON(500, gin.H{"code": 500, "error": err.Error(), "msg": "查询失败"})
 		panic(err)
@@ -40,13 +40,13 @@ func GetBuildingposition(c *gin.Context) {
 
 // 新增建筑位置信息
 func AddBuildingposition(c *gin.Context) {
-	var Row model.BuidingRow
+	var Row model.BuildingRow
 	if err := c.ShouldBindJSON(&Row); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"code": 400, "error": err.Error(), "msg": "参数错误"})
 		panic(err)
 		return
 	}
-	err := db.DB.Table("buildingposition").Create(&Row).Error
+	err := db.DB.Table("building_position").Create(&Row).Error
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "error": err.Error(), "msg": "新增失败"})
 		panic(err)
@@ -58,7 +58,7 @@ func AddBuildingposition(c *gin.Context) {
 // 删除建筑位置信息
 func DelBuildingposition(c *gin.Context) {
 	id := c.Param("id")
-	err := db.DB.Table("buildingposition").Delete(&model.BuidingRow{}, id).Error
+	err := db.DB.Table("building_position").Delete(&model.BuildingRow{}, id).Error
 	if err != nil {
 		c.JSON(500, gin.H{"code": 500, "msg": "操作失败"})
 		panic(err)

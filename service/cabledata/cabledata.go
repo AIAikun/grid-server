@@ -17,7 +17,7 @@ func ListCabledata(c *gin.Context) {
 	pageSizeStr := c.Query("pageSize")
 	page, _ := strconv.Atoi(pageStr)
 	pageSize, _ := strconv.Atoi(pageSizeStr)
-	d := db.DB.Table("cabledata").Limit(pageSize).Offset((page - 1) * pageSize).Find(&Rows)
+	d := db.DB.Table("cable_data").Limit(pageSize).Offset((page - 1) * pageSize).Find(&Rows)
 	if d.Error != nil {
 		c.JSON(500, gin.H{"code": 500, "error": d.Error.Error(), "msg": "查询失败"})
 		panic(d.Error.Error())
@@ -31,7 +31,7 @@ func ListCabledata(c *gin.Context) {
 func GetCabledata(c *gin.Context) {
 	id := c.Param("id")
 	var Row model.CableRow
-	err := db.DB.Table("cabledata").Take(&Row, id).Error
+	err := db.DB.Table("cable_data").Take(&Row, id).Error
 	if err != nil {
 		c.JSON(500, gin.H{"code": 500, "error": err.Error(), "msg": "查询失败"})
 		panic(err)
@@ -48,7 +48,7 @@ func AddCabledata(c *gin.Context) {
 		panic(err)
 		return
 	}
-	err := db.DB.Table("cabledata").Create(&Row).Error
+	err := db.DB.Table("cable_data").Create(&Row).Error
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 500, "error": err.Error(), "msg": "新增失败"})
 		panic(err)
@@ -60,7 +60,7 @@ func AddCabledata(c *gin.Context) {
 // 删除电缆数据
 func DelCabledata(c *gin.Context) {
 	id := c.Param("id")
-	err := db.DB.Table("cabledata").Delete(&model.CableRow{}, id).Error
+	err := db.DB.Table("cable_data").Delete(&model.CableRow{}, id).Error
 	if err != nil {
 		c.JSON(500, gin.H{"code": 500, "msg": "操作失败"})
 		panic(err)

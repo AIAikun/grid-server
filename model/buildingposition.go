@@ -1,7 +1,7 @@
 package model
 
 type (
-	BuidingRow struct {
+	BuildingRow struct {
 		Id       int     `json:"id"`
 		Model_id int     `json:"modelId"`
 		Status   int     `json:"status"`

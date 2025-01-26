@@ -9,11 +9,11 @@ import (
 var DB *gorm.DB
 
 func InitMysql() {
-	username := "grid"
-	password := "dian@2023"
-	host := "47.116.59.2"
+	username := "root"
+	password := "M=qRg_#UJhL?Da>=g9^3"
+	host := "101.43.63.11"
 	port := "3306"
-	Dbname := "grid_ry"
+	Dbname := "86_system_grid"
 	timeout := "10s"
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?timeout=%s&parseTime=true&loc=Local", username, password, host, port, Dbname, timeout)
 	db, err := gorm.Open(mysql.Open(dsn))
