@@ -5,6 +5,8 @@ import (
 	"server/service"
 	"server/service/buildingposition"
 	"server/service/cabledata"
+	"server/service/laserout"
+	"server/service/laseroutpoint"
 )
 
 func Router() *gin.Engine {
@@ -26,6 +28,20 @@ func Router() *gin.Engine {
 			buildingpositionGroup.GET("/:id", buildingposition.GetBuildingposition)    // 查询建筑位置信息详细信息
 			buildingpositionGroup.POST("", buildingposition.AddBuildingposition)       // 新增建筑位置信息
 			buildingpositionGroup.DELETE("/:id", buildingposition.DelBuildingposition) // 删除建筑位置信息
+		}
+		laserOutGroup := systemGroup.Group("/laserout")
+		{
+			laserOutGroup.GET("/list", laserout.ListLaserOut)  // 查询激光输出列表
+			laserOutGroup.GET("/:id", laserout.GetLaserOut)    // 查询激光输出详细信息
+			laserOutGroup.POST("", laserout.AddLaserOut)       // 新增激光输出信息
+			laserOutGroup.DELETE("/:id", laserout.DelLaserOut) // 删除激光输出信息
+		}
+		laserOutPointGroup := systemGroup.Group("/laseroutpoint")
+		{
+			laserOutPointGroup.POST("", laseroutpoint.AddLaserOutPoint)       // 新增激光输出点信息
+			laserOutPointGroup.GET("/list", laseroutpoint.ListLaserOutPoint)  // 查询激光输出点信息列表
+			laserOutPointGroup.GET("/:id", laseroutpoint.GetLaserOutPoint)    // 查询激光输出点信息详细信息
+			laserOutPointGroup.DELETE("/:id", laseroutpoint.DelLaserOutPoint) // 删除激光输出点信息
 		}
 	}
 	r.GET("/circuit/state", cabledata.GetCircuitStatus) // 获取电路状态
