@@ -25,8 +25,8 @@ func AddLaserOutPoint(c *gin.Context) {
 	c.JSON(200, gin.H{"code": 200, "msg": "操作成功"})
 }
 
-// 查询激光输出点信息列表
-func ListLaserOutPoint(c *gin.Context) {
+// 分页查询激光输出点信息列表
+func ListLaserOutPointByPage(c *gin.Context) {
 	var Rows []model.LaserOutPoint
 	pageStr := c.Query("page")
 	pageSizeStr := c.Query("pageSize")
@@ -65,4 +65,17 @@ func DelLaserOutPoint(c *gin.Context) {
 		return
 	}
 	c.JSON(200, gin.H{"code": 200, "msg": "删除成功"})
+}
+
+// 查询激光输出点信息列表
+func ListLaserOutPoint(c *gin.Context) {
+	var Rows []model.LaserOutPoint
+	d := db.DB.Table("86_system_grid.laser_out_point").Find(&Rows)
+	if d.Error != nil {
+		c.JSON(500, gin.H{"code": 500, "error": d.Error.Error(), "msg": "查询失败"})
+		panic(d.Error.Error())
+		return
+	}
+	total := d.RowsAffected
+	c.JSON(200, gin.H{"total": total, "rows": Rows, "code": 200, "msg": "查询成功"})
 }

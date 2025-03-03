@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a573be49-0afd-4d8c-b17b-c3f56a9ea978" name="更改" comment="2025.1.28">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/807b5ae9-deae-454e-825a-8ef4771aebc7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/807b5ae9-deae-454e-825a-8ef4771aebc7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/buildingposition/buildingposition.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/buildingposition/buildingposition.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/cabledata/cabledata.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/cabledata/cabledata.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/laserout/laserout.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laserout/laserout.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/laseroutpoint/laseroutpoint.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/laseroutpoint/laseroutpoint.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +26,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file:///usr/local/bin/go" />
+  <component name="GOROOT" url="file://$USER_HOME$/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.23.0.windows-amd64" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -68,12 +74,12 @@
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/Jmh",
+    "last_opened_file_path": "E:/Jmh/Documents/Obsidian",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "go.sdk"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -124,8 +130,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-d297c17c1fbd-85c80fddc9a6-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-243.23654.166" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-GO-243.23654.166" />
+        <option value="bundled-gosdk-d297c17c1fbd-57c114c3cede-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-243.25659.52" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-GO-243.25659.52" />
       </set>
     </attachedChunks>
   </component>

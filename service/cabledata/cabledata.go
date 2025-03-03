@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-// 查询电缆数据列表
-func ListCabledata(c *gin.Context) {
+// 分页查询电缆数据列表
+func ListCabledataByPage(c *gin.Context) {
 	var Rows []model.CableRow
 	pageStr := c.Query("page")
 	pageSizeStr := c.Query("pageSize")
@@ -95,4 +95,18 @@ func GetCircuitStatus(c *gin.Context) {
 		"code":  200,
 		"msg":   "查询成功",
 	})
+}
+
+// 查询电缆数据列表
+func ListCabledata(c *gin.Context) {
+	var Rows []model.CableRow
+	d := db.DB.Table("cable_data").Find(&Rows)
+	if d.Error != nil {
+		c.JSON(500, gin.H{"code": 500, "error": d.Error.Error(), "msg": "查询失败"})
+		panic(d.Error.Error())
+		return
+	}
+	total := d.RowsAffected
+	c.JSON(200, gin.H{"total": total, "rows": Rows, "code": 200, "msg": "查询成功"})
+
 }

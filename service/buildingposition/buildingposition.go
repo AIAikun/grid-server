@@ -8,8 +8,8 @@ import (
 	"strconv"
 )
 
-// 查询建筑位置信息列表
-func ListBuildingposition(c *gin.Context) {
+// 分页查询建筑位置信息列表
+func ListBuildingpositionByPage(c *gin.Context) {
 	var Rows []model.BuildingRow
 	var total int64
 	pageStr := c.Query("page")
@@ -65,4 +65,17 @@ func DelBuildingposition(c *gin.Context) {
 		return
 	}
 	c.JSON(200, gin.H{"code": 200, "msg": "操作成功"})
+}
+
+// 查询建筑位置信息列表
+func ListBuildingposition(c *gin.Context) {
+	var Rows = []model.BuildingRow{}
+	var total int64
+	err := db.DB.Table("building_position").Count(&total).Find(&Rows).Error
+	if err != nil {
+		c.JSON(500, gin.H{"code": 500, "error": err, "msg": "查询失败"})
+		panic(err)
+		return
+	}
+	c.JSON(200, gin.H{"total": total, "rows": Rows, "code": 200, "msg": "查询成功"})
 }

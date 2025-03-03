@@ -7,8 +7,8 @@ import (
 	"strconv"
 )
 
-// 查询激光输出列表
-func ListLaserOut(c *gin.Context) {
+// 分页查询激光输出列表
+func ListLaserOutByPage(c *gin.Context) {
 	var Rows []model.LaserOut
 	pageStr := c.Query("page")
 	pageSizeStr := c.Query("pageSize")
@@ -64,4 +64,16 @@ func DelLaserOut(c *gin.Context) {
 		return
 	}
 	c.JSON(200, gin.H{"code": 200, "msg": "删除成功"})
+}
+
+// 查询激光输出列表
+func ListLaserOut(c *gin.Context) {
+	var Rows []model.LaserOut
+	err := db.DB.Table("86_system_grid.laser_out").Find(&Rows).Error
+	if err != nil {
+		c.JSON(500, gin.H{"code": 500, "error": err.Error(), "msg": "查询失败"})
+		panic(err)
+		return
+	}
+	c.JSON(200, gin.H{"rows": Rows, "code": 200, "msg": "查询成功"})
 }
