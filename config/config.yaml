@@ -1,0 +1,6 @@
+mysql:
+  username: "root"
+  password: "M=qRg_#UJhL?Da>=g9^3"
+  host: "101.43.63.11"
+  port: "3306"
+  dbname: "86_system_grid"
